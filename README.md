@@ -15,8 +15,21 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL]()
-- Live Site URL: [GitHub Pages]()
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/fylo-landing-page-with-flex-4CMvmAUuOp)
+- Live Site URL: [GitHub Pages](https://inlumio.github.io/fylo-two-column-landing-page/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+
+### My thoughts
+
+Wow, this project was hard for me and I still have a long way. I need more clearly determine general styles, changes with font-size, when layout changes. Despite everything, I'm proud that complete it🙂
 
 ## Author Profiles
 
