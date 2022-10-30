@@ -24,6 +24,7 @@ a {
 	text-decoration: none;
 	color: inherit;
 	font-family: var(--ff-headings);
+	cursor: pointer;
 }
 
 ul,
@@ -50,6 +51,8 @@ form {
 }
 
 input {
+	display: block;
+	width: 100%;
 	border: 1px solid var(--dark-blue);
 	padding: 0.75rem 1.25rem;
 }
@@ -58,12 +61,22 @@ input::placeholder {
 	color: var(--gray);
 }
 
+input:invalid {
+	border-color: red;
+}
+
 button {
 	border: none;
 	background-color: var(--bright-blue);
 	color: hsl(0, 0%, 100%);
 	font-weight: 700;
-	padding: 0.75rem 3rem;
+	padding: 0.75rem calc(5% + 0.5rem);
+	cursor: pointer;
+	transition: background-color 0.25s;
+}
+
+button:hover {
+	background-color: hsl(224, 93%, 68%);
 }
 
 h1,
@@ -74,7 +87,8 @@ h3 {
 	font-family: var(--ff-headings);
 }
 
-section, footer {
+section,
+footer {
 	padding-block: 3rem;
 }
 
@@ -100,22 +114,36 @@ body {
 	align-items: center;
 }
 
+.email-input {
+	position: relative;
+}
+
+.email-input:has(input:invalid)::after {
+	content: "Please, check your email";
+	display: block;
+	margin-block-start: 0.2rem;
+	font-size: 0.85rem;
+	text-align: start;
+}
+
 @media (min-width: 600px) {
+	.container {
+		width: calc(75vw + 4rem);
+		max-width: 1600px;
+	}
+}
+
+@media (min-width: 950px) {
+	section,
+	footer {
+		padding-block: 5rem;
+	}
 	h1,
 	h2,
 	h3 {
 		text-align: left;
 	}
 
-	.container {
-		width: calc(90vw + 4rem);
-	}
-}
-
-@media (min-width: 950px) {
-	section, footer {
-		padding-block: 5rem;
-	}
 	.flex-section .container {
 		flex-direction: row;
 	}
@@ -128,8 +156,8 @@ body {
 	.flex-section .container [class*='img'] {
 		order: 1;
 	}
+	
 }
-
 
 /* 
 	Header 
@@ -158,10 +186,11 @@ body {
 	gap: calc(2vw + 0.25rem);
 }
 
-.nav__item {}
+.nav__item {
+}
 
-.nav__link {}
-
+.nav__link {
+}
 
 /* 
 	Main
@@ -170,17 +199,18 @@ body {
 	margin-block-start: 3rem;
 }
 
-
 /* 
 	Hero
 */
-.hero {}
+.hero {
+}
 
 .hero .container {
 	gap: 3rem;
 }
 
-.hero__img {}
+.hero__img {
+}
 
 .main__header {
 	margin-block-end: 1.5rem;
@@ -198,6 +228,14 @@ body {
 	gap: 1rem;
 }
 
+.hero .email-input:has(input:invalid)::after {
+	color: red;
+}
+
+.hero__form button {
+	box-shadow: 0.2rem 0.2rem 0.5rem hsl(224, 93%, 58%, 0.25);
+}
+
 @media (min-width: 600px) {
 	.hero__details {
 		text-align: left;
@@ -205,8 +243,8 @@ body {
 	.hero__form {
 		align-items: center;
 	}
-	.hero__form input {
-		width: 50%;
+	.hero__form .email-input {
+		width: 60%;
 	}
 }
 
@@ -226,8 +264,12 @@ body {
 	.hero__form {
 		flex-direction: row;
 	}
-}
 
+	.hero .email-input:has(input:invalid)::after {
+		position: absolute;
+
+	}
+}
 
 /* 
 	Middle
@@ -254,7 +296,8 @@ body {
 	width: 100%;
 }
 
-.middle__img {}
+.middle__img {
+}
 
 .middle__content {
 	display: flex;
@@ -288,6 +331,10 @@ body {
 	position: relative;
 }
 
+.middle__link:hover {
+	color: hsl(170, 45%, 53%);
+}
+
 .middle__link::after {
 	content: '';
 	position: absolute;
@@ -296,6 +343,10 @@ body {
 	width: 100%;
 	height: 1px;
 	background-color: var(--moderate-cyan);
+}
+
+.middle__link:hover::after {
+	background-color: hsl(170, 45%, 53%);
 }
 
 .middle__link img {
@@ -346,7 +397,6 @@ body {
 }
 
 @media (min-width: 950px) {
-	
 	.middle__content {
 		align-items: flex-start;
 	}
@@ -363,7 +413,6 @@ body {
 		font-size: 0.85rem;
 	}
 }
-
 
 /* 
 	Subscribe
@@ -393,8 +442,8 @@ body {
 	margin-inline: auto;
 }
 
-.subscribe__form input {
-	border: none;
+.subscribe__form input, .subscribe__form button{
+	box-shadow: 0.2rem 0.2rem 0.25rem hsl(0, 0%, 0%, 0.2);
 }
 
 @media (min-width: 950px) {
@@ -402,7 +451,7 @@ body {
 		text-align: start;
 	}
 	.subscribe .container {
-		gap: 15rem;
+		gap: calc(10vw + 1rem);
 	}
 	.subscribe__header {
 		font-size: 1.75rem;
@@ -413,11 +462,10 @@ body {
 	.subscribe__form {
 		align-items: flex-start;
 	}
-	.subscribe__form input {
+	.subscribe__form .email-input {
 		width: 100%;
 	}
 }
-
 
 /* 
 	Footer
@@ -451,7 +499,12 @@ body {
 	font-family: var(--ff-body);
 }
 
-.contacts {}
+.footer a:hover {
+	color: hsl(224, 93%, 75%);
+}
+
+.contacts {
+}
 
 .contact__link {
 	display: flex;
@@ -475,6 +528,10 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.social a:hover {
+	border-color: hsl(224, 93%, 75%);
 }
 
 @media (min-width: 950px) {
