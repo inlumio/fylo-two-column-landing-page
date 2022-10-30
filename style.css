@@ -41,7 +41,6 @@ figure {
 input,
 button {
 	font-family: var(--ff-headings);
-	padding: 0.75rem 1.25rem;
 	border-radius: 0.2rem;
 	outline: none;
 }
@@ -52,6 +51,7 @@ form {
 
 input {
 	border: 1px solid var(--dark-blue);
+	padding: 0.75rem 1.25rem;
 }
 
 input::placeholder {
@@ -63,10 +63,7 @@ button {
 	background-color: var(--bright-blue);
 	color: hsl(0, 0%, 100%);
 	font-weight: 700;
-}
-
-.container {
-	padding-inline: 2rem;
+	padding: 0.75rem 3rem;
 }
 
 h1,
@@ -77,15 +74,66 @@ h3 {
 	font-family: var(--ff-headings);
 }
 
-section {
+section, footer {
 	padding-block: 3rem;
 }
 
 body {
 	font-family: var(--ff-body);
 	color: var(--dark-blue);
-	padding-block-start: 2rem;
+	padding-block-start: calc(2vw + 1rem);
 }
+
+/* 
+	General classes
+*/
+
+.container {
+	padding-inline: 2rem;
+	margin-inline: auto;
+}
+
+.flex-section .container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (min-width: 600px) {
+	h1,
+	h2,
+	h3 {
+		text-align: left;
+	}
+
+	.container {
+		width: calc(90vw + 4rem);
+	}
+}
+
+@media (min-width: 950px) {
+	section, footer {
+		padding-block: 5rem;
+	}
+	.flex-section .container {
+		flex-direction: row;
+	}
+
+	.flex-section .container > * {
+		flex-basis: 50%;
+		flex: 1;
+	}
+
+	.flex-section .container [class*='img'] {
+		order: 1;
+	}
+}
+
+
+/* 
+	Header 
+*/
 
 .header .container {
 	display: flex;
@@ -107,30 +155,32 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
+	gap: calc(2vw + 0.25rem);
 }
 
-.nav__item {
-}
+.nav__item {}
 
-.nav__link {
-}
+.nav__link {}
 
+
+/* 
+	Main
+*/
 .main {
 	margin-block-start: 3rem;
 }
 
-.hero {
-}
+
+/* 
+	Hero
+*/
+.hero {}
 
 .hero .container {
-	display: flex;
-	flex-direction: column;
 	gap: 3rem;
 }
 
-.hero__img {
-}
+.hero__img {}
 
 .main__header {
 	margin-block-end: 1.5rem;
@@ -148,6 +198,40 @@ body {
 	gap: 1rem;
 }
 
+@media (min-width: 600px) {
+	.hero__details {
+		text-align: left;
+	}
+	.hero__form {
+		align-items: center;
+	}
+	.hero__form input {
+		width: 50%;
+	}
+}
+
+@media (min-width: 950px) {
+	.logo {
+		width: 7.5rem;
+	}
+
+	.hero .main__header {
+		font-size: 2.5rem;
+	}
+
+	.hero__details {
+		font-size: 1.2rem;
+	}
+
+	.hero__form {
+		flex-direction: row;
+	}
+}
+
+
+/* 
+	Middle
+*/
 .middle {
 	background-color: #f8f8fe;
 	margin-block-start: 6rem;
@@ -155,8 +239,6 @@ body {
 }
 
 .middle .container {
-	display: flex;
-	flex-direction: column;
 	gap: 6rem;
 }
 
@@ -172,12 +254,12 @@ body {
 	width: 100%;
 }
 
-.middle__image {
-}
+.middle__img {}
 
 .middle__content {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 .middle__header {
@@ -200,7 +282,6 @@ body {
 	color: var(--moderate-cyan);
 	padding-block: 0.5rem;
 	margin-block: 3rem;
-	margin-inline: auto;
 	display: flex;
 	align-items: center;
 	gap: 5px;
@@ -222,8 +303,7 @@ body {
 }
 
 .testimonial {
-	width: 350px;
-	margin-inline: auto;
+	max-width: 350px;
 	background-color: #fff;
 	padding: 1.5rem 2rem;
 	font-size: 0.7rem;
@@ -259,6 +339,36 @@ body {
 	font-size: 0.7em;
 }
 
+@media (min-width: 600px) {
+	.middle {
+		margin-block-start: 12rem;
+	}
+}
+
+@media (min-width: 950px) {
+	
+	.middle__content {
+		align-items: flex-start;
+	}
+	.middle__header {
+		font-size: 2rem;
+	}
+	.middle__details {
+		font-size: 1.2rem;
+	}
+	.middle__link {
+		font-size: 1rem;
+	}
+	.testimonial {
+		font-size: 0.85rem;
+	}
+}
+
+
+/* 
+	Subscribe
+*/
+
 .subscribe {
 	background-color: var(--desaturated-Blue);
 	color: #fff;
@@ -283,10 +393,39 @@ body {
 	margin-inline: auto;
 }
 
+.subscribe__form input {
+	border: none;
+}
+
+@media (min-width: 950px) {
+	.subscribe {
+		text-align: start;
+	}
+	.subscribe .container {
+		gap: 15rem;
+	}
+	.subscribe__header {
+		font-size: 1.75rem;
+	}
+	.subscribe__details {
+		font-size: 1rem;
+	}
+	.subscribe__form {
+		align-items: flex-start;
+	}
+	.subscribe__form input {
+		width: 100%;
+	}
+}
+
+
+/* 
+	Footer
+*/
+
 .footer {
 	background-color: var(--dark-blue);
 	color: white;
-	padding-block: 3rem;
 }
 
 .footer__logo {
@@ -300,7 +439,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 2.5rem;
-	
 }
 
 .footer__list {
@@ -313,9 +451,7 @@ body {
 	font-family: var(--ff-body);
 }
 
-.contacts {
-
-}
+.contacts {}
 
 .contact__link {
 	display: flex;
@@ -341,3 +477,10 @@ body {
 	justify-content: center;
 }
 
+@media (min-width: 950px) {
+	.footer__links {
+		font-size: 1rem;
+		flex-direction: row;
+		gap: 15vw;
+	}
+}
